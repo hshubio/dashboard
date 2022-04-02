@@ -22,7 +22,7 @@
 	
 	function api($data) {
 		$post = json_encode($data);
-		$curl = curl_init("http://172.28.155.86");
+		$curl = curl_init("http://".$config["pdnsApiHost"]);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
