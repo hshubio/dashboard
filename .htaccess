@@ -1,0 +1,9 @@
+Header set Access-Control-Allow-Origin: *
+
+RewriteEngine on
+RewriteRule ^login/?$ account.php?page=$0
+RewriteRule ^signup/?$ account.php?page=$0
+
+RewriteRule ^(dns)/([A-Za-z0-9]+)/?$ index.php?page=$1&zone=$2
+
+RewriteRule ^([A-Za-z0-9]+)/?$ index.php?page=$0

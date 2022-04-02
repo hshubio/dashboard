@@ -1,0 +1,582 @@
+:root {
+	--themeColor: #409aed;
+	--deleteColor: #db4437;
+
+	--primaryBackground: #2d2d2d;
+	--secondaryBackground: #282828;
+	--tertiaryBackground: #474748;
+	--quarteraryBackground: #323232;
+
+	--errorForeground: #db4437;
+	--errorBackground: #5d3737;
+
+	--primaryForeground: #fff;
+	--secondaryForeground: #7a7a7a;
+
+	--borderColor: #222;
+	--borderColorAlt: #181818;
+
+	--userIcon: url(/assets/img/icons/user);
+
+	--homeIcon: url(/assets/img/icons/home);
+	--overviewIcon: url(/assets/img/icons/overview);
+	--domainsIcon: url(/assets/img/icons/domains);
+	--dnsIcon: url(/assets/img/icons/dns);
+	--hostingIcon: url(/assets/img/icons/hosting);
+	--adminIcon: url(/assets/img/icons/admin);
+	
+	--addIcon: url(/assets/img/icons/add);
+	--downIcon: url(/assets/img/icons/down);
+	--editIcon: url(/assets/img/icons/edit);
+	--saveIcon: url(/assets/img/icons/save);
+	--cancelIcon: url(/assets/img/icons/cancel);
+	--deleteIcon: url(/assets/img/icons/delete);
+}
+
+* {
+	box-sizing: border-box;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-moz-mask-size: contain;
+	-moz-mask-position: center;
+	-moz-mask-repeat: no-repeat;
+	mask-size: contain;
+	mask-position: center;
+	mask-repeat: no-repeat;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.select {
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	user-select: text;
+}
+
+html {
+	color: var(--primaryForeground);
+	background-color: var(--primaryBackground);
+	font-family: 'Rubik', sans-serif;
+}
+html, body {
+	height: 100%;
+	min-width: 300px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+#blackout {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #000;
+	opacity: 0.3;
+	z-index: 9;
+	display: none;
+}
+
+input, select {
+	border: none;
+	outline: none;
+	background: transparent;
+	font-size: 16px;
+	color: var(--primaryForeground);
+}
+
+a {
+	color: var(--themeColor);
+	text-decoration: none;
+}
+a:hover {
+	opacity: 0.5;
+}
+
+.shown {
+	display: block !important;
+}
+
+.links {
+	display: flex;
+	justify-content: flex-end;
+}
+.links .link {
+	margin-left: 20px;
+}
+
+.link {
+	color: var(--themeColor);
+    width: fit-content;
+}
+.link:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.header {
+	background-color: var(--secondaryBackground);
+	height: 60px;
+	width: 100%;
+	display: flex;
+	border-bottom: 1px solid var(--borderColor);
+	box-sizing: content-box;
+	flex-shrink: 1;
+}
+.header div {
+	height: 100%;
+}
+.header .section {
+	box-sizing: border-box;
+	padding: 10px 15px;
+}
+.header .logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+}
+.header .section.right {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.header .domains {
+	width: 100%;
+	max-width: 180px;
+	flex-grow: 1;
+	padding: 10px;
+	font-size: 16px;
+	color: var(--primaryForeground);
+	visibility: hidden;
+}
+.header .account {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	border-radius: 10px;
+	margin-left: 10px;
+}
+.header .account * {
+	pointer-events: none;
+}
+.header .account:hover {
+	background-color: var(--quarteraryBackground);
+	cursor: pointer;
+}
+.header .account .avatar {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	-webkit-mask-image: var(--userIcon);
+	-moz-mask-image: var(--userIcon);
+	mask-image: var(--userIcon);
+	background-color: var(--primaryForeground);
+}
+.header .account .arrow {
+	width: 10px;
+	height: 10px;
+	margin-left: 5px;
+	-webkit-mask-image: var(--downIcon);
+	-moz-mask-image: var(--downIcon);
+	mask-image: var(--downIcon);
+	background-color: var(--primaryForeground);
+}
+
+.main {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	overflow: hidden;
+}
+
+.main .menu {
+	background-color: var(--secondaryBackground);
+	width: 90px;
+	height: 100%;
+	padding: 10px;
+	flex-shrink: 0;
+}
+.menu .item {
+	width: 100%;
+	text-align: center;
+}
+.menu .item.disabled {
+	filter: saturate(0%);
+}
+.menu .item.disabled:hover {
+	cursor: not-allowed !important;
+}
+.menu .separator {
+	height: 1px;
+	margin: 10px;
+	background-color: var(--tertiaryBackground);
+}
+.main .menu .item {
+	height: 70px;
+	margin: 5px 0px 5px 0px;
+	border-radius: 10px;
+	font-size: 12px;
+	line-height: 70px;
+	position: relative;
+	color: rgba(0, 0, 0, 0);
+	transition: color .25s, line-height .25s;
+}
+.main .menu .item:first-child {
+	margin: 0px 0px 5px 0px;
+}
+.main .menu .item:last-child {
+	margin: 5px 0px 0px 0px;
+}
+.main .menu .item:hover {
+	line-height: 102.5px;
+	color: var(--primaryForeground);
+	cursor: pointer;
+	background-color: var(--quarteraryBackground);
+}
+.main .menu .item:hover, .main .menu .item.current {
+	line-height: 102.5px;
+	color: var(--primaryForeground);
+	cursor: pointer;
+}
+.main .menu .item.current {
+	background-color: var(--tertiaryBackground);
+}
+.main .menu .item.current, .main .menu .item.current .icon {
+	transition: unset !important;
+}
+.main .menu .item:hover > .icon, .main .menu .item.current > .icon {
+	-webkit-mask-position: center 12px;
+	-moz-mask-position: center 12px;
+	mask-position: center 12px;
+}
+.main .menu .item .icon {
+	-webkit-mask-size: 30px;
+	-moz-mask-size: 30px;
+	mask-size: 30px;
+	background-color: var(--themeColor);
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	transition: -webkit-mask-position .25s, -moz-mask-position .25s, mask-position .25s;
+}
+
+.popover[data-name=account] .menu .item {
+	height: 40px;
+	line-height: 40px;
+}
+.popover[data-name=account] .menu .item:hover {
+	background-color: var(--quarteraryBackground);
+	cursor: pointer;
+}
+
+.circle {
+    width: 24px;
+    height: 24px;
+}
+
+.main .body {
+    flex-grow: 1;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.main .body .holder {
+	width: 100%;
+	max-width: 1200px;
+	min-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+}
+.main .body .holder .section:not(:last-child) {
+	margin-bottom: 40px;
+}
+.main .body .section .title {
+	font-size: 20px;
+	margin: 0px 0px 10px 20px;
+}
+.main .body .section[data-section=domains] {
+	display: none;
+}
+.main .body .box {
+	width: 100%;
+	background-color: var(--secondaryBackground);
+	padding: 20px;
+	border-radius: 15px;
+}
+
+.main .footer {
+	text-align: center;
+	padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.actions {
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    align-items: center;
+    height: 100%;
+}
+
+.actions .icon {
+	width: 18px;
+	height: 18px;
+	margin: 0px 0px 0px 5px;
+	background-color: var(--themeColor);
+}
+.actions .icon:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+table {
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+th {
+	background-color: var(--tertiaryBackground);
+}
+th.type {
+	width: 100px;
+}
+th.name {
+	width: 25%;
+}
+th.content {
+	width: 50%;
+}
+th.prio {
+	width: 90px;
+}
+th.ttl {
+	width: 100px;
+}
+th.action, #createZoneTable td.add, td.delete, td.id {
+	width: 40px;
+}
+td.email input {
+	width: 100%;
+}
+th, td {
+	position: relative;
+	padding: 10px;
+}
+td .edit {
+    overflow: hidden;
+    white-space: nowrap;
+    outline: none;
+    word-break: break-all;
+}
+td.domain .edit:empty:before {
+	content: "Domain";
+	opacity: 0.5;
+}
+td.dns {
+	width: 120px;
+}
+#domainTable td.name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.editable td:not(.editing) .edit {
+	pointer-events: none;
+}
+td.editing:hover {
+    cursor: text;
+}
+td.editing .edit[contenteditable=true] {
+	white-space: normal;
+}
+.editable td.editing .edit[contenteditable=true]  {
+	margin-right: 50px;
+}
+td .edit[contenteditable=true] {
+	text-overflow: clip;
+}
+td .edit:not([contenteditable=true]) {
+	text-overflow: ellipsis;
+}
+.editable td.editing {
+	background-color: var(--quarteraryBackground);
+	position: relative;
+}
+tbody tr:hover {
+	background-color: var(--primaryBackground);
+	cursor: pointer;
+}
+td.type select {
+	width: 100%;
+	color: var(--primaryForeground);
+	background-color: var(--secondaryBackground);
+}
+tr:hover td.type select {
+	background-color: var(--primaryBackground);
+}
+td.ttl .edit:empty:before {
+	content: "20";
+	opacity: 0.5;
+}
+td.error {
+	background-color: var(--errorBackground);
+}
+td.value {
+    word-break: break-all;
+}
+input.error {
+	background-color: var(--errorBackground) !important;
+}
+table#settings {
+	margin-bottom: 10px;
+}
+table#settings td {
+	padding: 0;
+}
+table#settings input {
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+}
+
+.icon.home {
+	-webkit-mask-image: var(--homeIcon);
+	-moz-mask-image: var(--homeIcon);
+	mask-image: var(--homeIcon);
+}
+.icon.overview {
+	-webkit-mask-image: var(--overviewIcon);
+	-moz-mask-image: var(--overviewIcon);
+	mask-image: var(--overviewIcon);
+}
+.icon.domains {
+	-webkit-mask-image: var(--domainsIcon);
+	-moz-mask-image: var(--domainsIcon);
+	mask-image: var(--domainsIcon);
+}
+.icon.dns {
+	-webkit-mask-image: var(--dnsIcon);
+	-moz-mask-image: var(--dnsIcon);
+	mask-image: var(--dnsIcon);
+}
+.icon.hosting {
+	-webkit-mask-image: var(--hostingIcon);
+	-moz-mask-image: var(--hostingIcon);
+	mask-image: var(--hostingIcon);
+}
+.icon.admin {
+	-webkit-mask-image: var(--adminIcon);
+	-moz-mask-image: var(--adminIcon);
+	mask-image: var(--adminIcon);
+}
+.icon.edit {
+	-webkit-mask-image: var(--editIcon);
+	-moz-mask-image: var(--editIcon);
+	mask-image: var(--editIcon);
+}
+.icon.save {
+	-webkit-mask-image: var(--saveIcon);
+	-moz-mask-image: var(--saveIcon);
+	mask-image: var(--saveIcon);
+}
+.icon.cancel {
+	-webkit-mask-image: var(--cancelIcon);
+	-moz-mask-image: var(--cancelIcon);
+	mask-image: var(--cancelIcon);
+}
+.icon.delete {
+	-webkit-mask-image: var(--deleteIcon);
+	-moz-mask-image: var(--deleteIcon);
+	mask-image: var(--deleteIcon);
+	position: absolute;
+    top: 12px;
+    right: 4px;
+    width: 15px;
+    height: 15px;
+}
+.icon.add {
+	-webkit-mask-image: var(--addIcon);
+	-moz-mask-image: var(--addIcon);
+	mask-image: var(--addIcon);
+	-webkit-mask-size: 20px;
+	-moz-mask-size: 20px;
+	mask-size: 20px;
+}
+
+.main .account {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.main .account .title {
+	font-size: 50px;
+	color: var(--primaryForeground);
+}
+.main .account .subtitle {
+	margin-bottom: 20px;
+	color: var(--secondaryForeground);
+}
+#accountForm {
+	width: 100%;
+	max-width: 300px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#accountForm input {
+	height: 40px;
+	width: 100%;
+	margin-bottom: 10px;
+	padding: 10px;
+	background-color: var(--secondaryBackground);
+    border-radius: 10px;
+}
+.submit {
+	width: 100%;
+	height: 40px;
+	background-color: var(--themeColor);
+	line-height: 40px;
+	text-align: center;
+	border-radius: 10px;
+}
+.submit:hover {
+	cursor: pointer;
+	opacity: 0.4;
+}
+#accountForm .message {
+	margin-top: 10px;
+}
+
+.popover {
+	position: absolute;
+	display: none;
+	z-index: 10;
+}
+.popover[data-name=account] {
+	width: 200px;
+	right: 10px;
+	top: 60px;
+	background-color: var(--secondaryBackground);
+	border: 1px solid var(--borderColorAlt);
+}
