@@ -76,8 +76,6 @@ function impersonate(user) {
 
 $(function(){
 	let getUsers = $("#userTable").find("tr");
-		
-	log(getUsers);
 
 	$.each(getUsers, function(k, user){
 		let id = $(user).find(".id").html();

@@ -109,6 +109,8 @@ a:hover {
 .links {
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
+	text-align: center;
 }
 .links .link {
 	margin-left: 20px;
