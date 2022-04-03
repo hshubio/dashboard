@@ -8,6 +8,8 @@ You will need to set up PowerDNS with a MySQL replicated backend (each server wi
 
 It is essential to lock down MySQL and have the servers communicate over a VPN/Backplane network (such as ZeroTier).
 
+All of the tables are listed in etc/tables.sql
+
 The TODO list for setting up Dashboard is:
 * Setup your web server and PHP (we run PHP 7.4)
 * `cd etc && cp config.sample.php config.php && vim config.php`
