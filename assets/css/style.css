@@ -405,6 +405,9 @@ td.dns {
 td.editing:hover {
     cursor: text;
 }
+[contenteditable=true] {
+	-webkit-user-select: auto;
+}
 td.editing .edit[contenteditable=true] {
 	white-space: normal;
 }

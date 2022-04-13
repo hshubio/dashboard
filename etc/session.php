@@ -4,7 +4,7 @@
 	$user = @$_SESSION["id"];
 	$userInfo = userInfo($user);
 
-	$revision = "20220403v1";
+	$revision = "20220413v1";
 
 	$page = "domains";
 	if (@$_GET["page"]) {
