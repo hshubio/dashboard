@@ -94,6 +94,10 @@ input, select {
 	color: var(--primaryForeground);
 }
 
+input, [contenteditable=true] {
+	-webkit-user-select: auto;
+}
+
 a {
 	color: var(--themeColor);
 	text-decoration: none;
@@ -404,9 +408,6 @@ td.dns {
 }
 td.editing:hover {
     cursor: text;
-}
-[contenteditable=true] {
-	-webkit-user-select: auto;
 }
 td.editing .edit[contenteditable=true] {
 	white-space: normal;
