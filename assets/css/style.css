@@ -288,6 +288,8 @@ a:hover {
 .circle {
     width: 24px;
     height: 24px;
+    position: absolute !important;
+    top: 8px;
 }
 
 .main .body {
